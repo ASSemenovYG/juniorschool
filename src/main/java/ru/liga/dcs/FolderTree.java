@@ -1,8 +1,11 @@
 package ru.liga.dcs;
 
+import java.sql.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.lang.String;
 
 /**
  * Класс FolderTree представляет собой структуру дерева папок.
@@ -39,7 +42,10 @@ public class FolderTree {
      * @return Список имен папок.
      */
     public List<String> findFoldersContainingPron(Folder folder) {
-        return Collections.emptyList();
+        List<String> pronList = new ArrayList<>();
+        for (int i = 0; i < folder.children.size(); i++)
+            if (folder.children.get(i).name.contains("pron")) pronList.add(folder.children.get(i).name);
+        return pronList;
     }
 
 }
