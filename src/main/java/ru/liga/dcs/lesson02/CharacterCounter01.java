@@ -1,7 +1,5 @@
 package ru.liga.dcs.lesson02;
 
-import java.util.regex.Pattern;
-
 public class CharacterCounter01 {
 
     /**
@@ -12,6 +10,13 @@ public class CharacterCounter01 {
      * @return количество вхождений символа в строку.
      */
     public int countCharacterOccurrences(String str, char ch) {
-        return (int) Pattern.compile(String.valueOf(ch)).matcher(str).results().count();
+        String symbol = String.valueOf(ch);
+        int symbolCount = 0;
+        while (str.contains(symbol)) {
+            symbolCount++;
+            str = str.substring(str.indexOf(symbol) + 1);
+            if (str.indexOf(symbol) == str.length() - 1) break;
+        }
+        return symbolCount;
     }
 }
