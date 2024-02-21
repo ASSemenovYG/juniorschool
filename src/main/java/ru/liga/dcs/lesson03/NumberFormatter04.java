@@ -14,6 +14,20 @@ public class NumberFormatter04 {
      * @return Строковое представление числа, дополненное лидирующими нулями.
      */
     public static String padNumberWithLeadingZeros(int number, int totalLength) {
-        return "";
+        String num = String.valueOf(number);
+        if (num.length() >= totalLength) {
+            return num;
+        }
+
+        int countLeadingZeros = totalLength - num.length();
+        StringBuilder sb = new StringBuilder();
+
+        if (num.startsWith("-")) {
+            sb.append("-").append("0".repeat(countLeadingZeros)).append(num.substring(1));
+        } else {
+            sb.append("0".repeat(countLeadingZeros)).append(num);
+        }
+
+        return sb.toString();
     }
 }
