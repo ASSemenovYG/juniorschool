@@ -12,6 +12,8 @@ public class TimeFormatter03 {
      * @return Строка времени в формате чч:мм:сс.
      */
     public static String convertSecondsToTime(int seconds) {
-        return "00:00:00";
+        if (seconds < 0)
+            throw new IllegalArgumentException("Количество секунд не может быть отрицательным! seconds = " + seconds);
+        return String.format("%02d:%02d:%02d", seconds / 3600, (seconds % 3600) / 60, seconds % 60);
     }
 }
