@@ -3,6 +3,7 @@ package ru.liga.dcs.lesson02;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 /**
@@ -53,8 +54,7 @@ public class PriorityQueue03<T> {
             queue.add(new QueueItem(item, priority));
         } else {
             //хешмап K<приоритет>/V<индекс в листе>
-            HashMap<Integer, Integer> priorityMap = queue
-                    .stream()
+            Map<Integer, Integer> priorityMap = queue.stream()
                     //оставляем только элементы, у которых приоритет выше чем у добавляемого или равен
                     .filter(queueItem -> queueItem.getPriority() <= priority)
                     .collect(Collectors.toMap(
@@ -68,9 +68,13 @@ public class PriorityQueue03<T> {
             } else if (priority < queue.peekFirst().getPriority()) {
                 //если приоритет выше самого высокого текущего
                 queue.addFirst(new QueueItem(item, priority));
-            } else if (priority > priorityMap.values().stream().max(Comparator.naturalOrder()).get()) {
+            } else if (priority > priorityMap.values().stream()
+                    .max(Comparator.naturalOrder())
+                    .get()) {
                 //если нет элементов с добавляемым приоритетом, но есть с приоритетом выше
-                queue.add(priorityMap.values().stream().max(Comparator.naturalOrder()).get() + 1, new QueueItem(item, priority));
+                queue.add(priorityMap.values().stream()
+                        .max(Comparator.naturalOrder())
+                        .get() + 1, new QueueItem(item, priority));
             } else {
                 //добавляемый приоритет ниже всех в очереди - добавляем в конец
                 queue.addLast(new QueueItem(item, priority));
