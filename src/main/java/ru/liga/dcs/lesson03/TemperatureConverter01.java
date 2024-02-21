@@ -7,11 +7,12 @@ public class TemperatureConverter01 {
 
     /**
      * Конвертирует температуру из Цельсия в Фаренгейт.
+     * °F = (°C × 9/5) + 32
      *
      * @param celsius Температура в Цельсиях.
      * @return Температура в Фаренгейтах.
      */
     public static double celsiusToFahrenheit(double celsius) {
-        return 0.0;
+        return celsius * ((double) 9 / 5) + 32;
     }
 }
