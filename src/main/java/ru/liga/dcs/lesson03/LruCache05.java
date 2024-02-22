@@ -12,7 +12,7 @@ import java.util.Map;
 public class LruCache05 {
     private final Map<String, Object> cache;
     private final int capacity;
-    private final LinkedList<Object> usageHistory;
+    private final LinkedList<String> usageHistory;
 
     /**
      * Конструктор для создания кэша с определённой ёмкостью.
