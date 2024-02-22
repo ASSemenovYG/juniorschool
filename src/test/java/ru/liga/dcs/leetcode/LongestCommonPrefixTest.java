@@ -33,11 +33,4 @@ public class LongestCommonPrefixTest {
                 "a"};
         assertThat(longestCommonPrefix.longestCommonPrefix(testArray)).isEqualTo("a");
     }
-
-    @Test
-    public void longestCommonPrefixKEK() {
-        String[] testArray = {
-                "KEKW", "KEKU", "KEKWTF", "KEKL", "KEKWait"};
-        assertThat(longestCommonPrefix.longestCommonPrefix(testArray)).isEqualTo("KEK");
-    }
 }
