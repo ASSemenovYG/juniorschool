@@ -11,7 +11,7 @@ import java.util.Map;
  */
 public class LruCache05 {
     private final Map<String, Object> cache;
-    private final int CAPACITY;
+    private final int capacity;
     private final LinkedList<Object> usageHistory;
 
     /**
@@ -21,7 +21,7 @@ public class LruCache05 {
      */
     public LruCache05(int capacity) {
         this.cache = new HashMap<>(capacity);
-        this.CAPACITY = capacity;
+        this.capacity = capacity;
         this.usageHistory = new LinkedList<>();
     }
 
@@ -66,7 +66,7 @@ public class LruCache05 {
      * @param key Ключ для добавляемого значения.
      */
     private void addNewKeyAndRemoveLeastUsed(String key) {
-        if (CAPACITY - usageHistory.size() > 0) usageHistory.addFirst(key);
+        if (capacity - usageHistory.size() > 0) usageHistory.addFirst(key);
         else {
             cache.remove(usageHistory.removeLast());
             usageHistory.addFirst(key);
