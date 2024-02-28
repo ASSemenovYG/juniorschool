@@ -1,5 +1,7 @@
 package ru.liga.dcs.lesson04;
 
+import java.util.regex.Pattern;
+
 public class StringUtility01 {
 
     /**
@@ -12,6 +14,9 @@ public class StringUtility01 {
      * @return Количество слов в строке. Возвращает 0 для {@code null} или пустой строки.
      */
     public static int countWords(String str) {
-        return 0;
+        if (str == null) {
+            return 0;
+        }
+        return (int) Pattern.compile("\\S+").matcher(str).results().count();
     }
 }
