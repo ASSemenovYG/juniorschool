@@ -13,11 +13,20 @@ public class CustomerRiskCounter00 {
 
     /**
      * Подсчитывает количество клиентов в каждой категории риска.
-     * 
+     *
      * @param customers Список клиентов.
      * @return Map, где ключ - это категория риска, а значение - количество клиентов в этой категории.
      */
     public static Map<String, Integer> countCustomersByRiskCategory(List<Customer00> customers) {
-        return null;
+        Map<String, Integer> riskCategoryCount = new HashMap<>();
+        for (Customer00 customer : customers) {
+            if (riskCategoryCount.isEmpty() || !riskCategoryCount.containsKey(customer.getRiskCategory())) {
+                riskCategoryCount.put(customer.getRiskCategory(), 1);
+            } else {
+                riskCategoryCount.replace(customer.getRiskCategory(), riskCategoryCount.get(customer.getRiskCategory()) + 1);
+            }
+        }
+
+        return riskCategoryCount;
     }
 }
