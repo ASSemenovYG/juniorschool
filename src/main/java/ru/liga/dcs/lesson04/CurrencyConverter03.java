@@ -20,7 +20,24 @@ public class CurrencyConverter03 {
      * @throws IllegalArgumentException если amount или exchangeRate недействительны. Ошибка включает в себя информацию о недействительных значениях.
      */
     public static BigDecimal convertCurrency(BigDecimal amount, BigDecimal exchangeRate) {
+        if (amount == null) {
+            throw new IllegalArgumentException(("Сумма для конвертации не может быть null!"));
+        }
+        if (amount.floatValue() < 0) {
+            throw new IllegalArgumentException(("Сумма не должна быть отрицательной: " + amount));
+        }
+        if (exchangeRate == null) {
+            throw new IllegalArgumentException(("Курс обмена не может быть null!"));
+        }
+        if (exchangeRate.floatValue() <= 0) {
+            throw new IllegalArgumentException(("Курс обмена должен быть больше нуля: " + exchangeRate));
+        }
 
-        return BigDecimal.ZERO;
+        BigDecimal result = amount.multiply(exchangeRate);
+        if (result.scale() != 2) {
+            return result.setScale(2, RoundingMode.FLOOR);
+        } else {
+            return result;
+        }
     }
 }
