@@ -33,11 +33,6 @@ public class CurrencyConverter03 {
             throw new IllegalArgumentException(("Курс обмена должен быть больше нуля: " + exchangeRate));
         }
 
-        BigDecimal result = amount.multiply(exchangeRate);
-        if (result.scale() != 2) {
-            return result.setScale(2, RoundingMode.FLOOR);
-        } else {
-            return result;
-        }
+        return amount.multiply(exchangeRate).setScale(2, RoundingMode.HALF_UP);
     }
 }
