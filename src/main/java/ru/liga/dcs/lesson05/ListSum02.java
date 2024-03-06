@@ -11,7 +11,8 @@ public class ListSum02 {
      * @return сумма чисел
      */
     public int sumList(List<Integer> numbers) {
-
-        return 0;
+        return numbers.stream()
+                .mapToInt(n -> n)
+                .sum();
     }
 }

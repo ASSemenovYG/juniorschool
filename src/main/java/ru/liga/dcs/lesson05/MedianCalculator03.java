@@ -1,5 +1,7 @@
 package ru.liga.dcs.lesson05;
 
+import java.util.Arrays;
+
 /**
  * Класс для расчёта медианы массива чисел.
  */
@@ -13,6 +15,12 @@ public class MedianCalculator03 {
      * @throws IllegalArgumentException если массив null или пуст.
      */
     public double calculateMedian(double[] numbers) {
-        return 0.0;
+        if (numbers == null) {
+            throw new IllegalArgumentException("numbers array cannot be null!");
+        }
+        if (numbers.length == 0) {
+            throw new IllegalArgumentException("numbers array cannot be empty!");
+        }
+        return (Arrays.stream(numbers).sum() / Arrays.stream(numbers).count());
     }
 }
