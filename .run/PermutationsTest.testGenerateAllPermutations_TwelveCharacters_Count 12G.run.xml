@@ -1,0 +1,19 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="PermutationsTest.testGenerateAllPermutations_TwelveCharacters_Count 12G" type="JUnit" factoryName="JUnit">
+    <module name="juniorschool" />
+    <extension name="coverage">
+      <pattern>
+        <option name="PATTERN" value="ru.liga.dcs.lesson05.*" />
+        <option name="ENABLED" value="true" />
+      </pattern>
+    </extension>
+    <option name="PACKAGE_NAME" value="ru.liga.dcs.lesson05" />
+    <option name="MAIN_CLASS_NAME" value="ru.liga.dcs.lesson05.PermutationsTest" />
+    <option name="METHOD_NAME" value="testGenerateAllPermutations_TwelveCharacters_Count" />
+    <option name="TEST_OBJECT" value="method" />
+    <option name="VM_PARAMETERS" value="-ea -Xmx12G" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>

@@ -13,6 +13,12 @@ public class StringFilter01 {
      * @return отфильтрованный список
      */
     public List<String> filterStrings(List<String> strings, Predicate<String> condition) {
-        return null;
+        if (strings == null) {
+            throw new IllegalArgumentException("List of strings cannot be null!");
+        }
+
+        return strings.stream()
+                .filter(condition)
+                .toList();
     }
 }
