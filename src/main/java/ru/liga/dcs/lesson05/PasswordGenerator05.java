@@ -1,5 +1,9 @@
 package ru.liga.dcs.lesson05;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
 /**
  * Класс для генерации и проверки сложности пароля.
  */
@@ -10,6 +14,14 @@ public class PasswordGenerator05 {
     private static final String DIGITS = "0123456789";
     private static final String SPECIAL_CHARACTERS = "!@#$%^&*()_+";
     private static final int MINIMUM_LENGTH = 8;
+    private static final List<String> CHARACTERS = new ArrayList<>() {
+        {
+            add(LOWER_CASE);
+            add(UPPER_CASE);
+            add(DIGITS);
+            add(SPECIAL_CHARACTERS);
+        }
+    };
 
 
     /**
@@ -19,7 +31,17 @@ public class PasswordGenerator05 {
      * @return сгенерированный сложный пароль.
      */
     public String generateStrongPassword(int length) {
-        return "";
+        if (length < MINIMUM_LENGTH) {
+            throw new IllegalArgumentException("Длина сложного пароля не может быть меньше " + MINIMUM_LENGTH + " ! Запрошенная длина: " + length);
+        }
+
+        StringBuilder password = new StringBuilder();
+        do {
+            for (int i = 0; i < length; i++) {
+                password.append(getRandomChar());
+            }
+        } while (!isPasswordStrong(password.toString()));
+        return password.toString();
     }
 
     /**
@@ -50,5 +72,11 @@ public class PasswordGenerator05 {
         }
 
         return hasLower && hasUpper && hasDigit && hasSpecial;
+    }
+
+    private char getRandomChar() {
+        Random r = new Random();
+        String characterString = CHARACTERS.get(r.nextInt(CHARACTERS.size()));
+        return characterString.charAt(r.nextInt(characterString.length()));
     }
 }
