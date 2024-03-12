@@ -1,6 +1,9 @@
 package ru.liga.dcs.lesson05;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Абстрактный класс, представляющий алгоритм. Класс реализует интерфейс Runnable,
@@ -42,6 +45,17 @@ public class AlgorithmComparator07 {
      * @return Карта с именами алгоритмов и их временами выполнения.
      */
     public static Map<String, Long> compare(List<Algorithm> algorithms) {
-        return null;
+        Map<String, Long> results = new HashMap<>();
+        for (Algorithm algorithm : algorithms) {
+            results.put(algorithm.getName(), timer(algorithm));
+        }
+        return results;
+    }
+
+    private static long timer(Runnable method) {
+        long time = System.nanoTime();
+        method.run();
+        time = System.nanoTime() - time;
+        return TimeUnit.NANOSECONDS.convert(time, TimeUnit.NANOSECONDS);
     }
 }
