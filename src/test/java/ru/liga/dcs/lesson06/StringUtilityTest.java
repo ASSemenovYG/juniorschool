@@ -1,7 +1,8 @@
 package ru.liga.dcs.lesson06;
 
 import org.junit.Test;
-import static org.assertj.core.api.Assertions.*;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class StringUtilityTest {
 
@@ -26,4 +27,20 @@ public class StringUtilityTest {
     }
 
     // Можно добавить дополнительные тесты для проверки других сценариев
+    @Test
+    public void testCanFormString_invalidCaseSameLetterTwice() {
+        assertThat(StringUtility02.canFormString("abcd", "abcdd")).isFalse();
+    }
+    @Test
+    public void testCanFormString_invalidCaseSameLetterTwiceAndSmallerTarget() {
+        assertThat(StringUtility02.canFormString("abcd", "add")).isFalse();
+    }
+    @Test
+    public void testCanFormString_invalidCaseSameLetterTwiceAndSameSizeTarget() {
+        assertThat(StringUtility02.canFormString("abcd", "addd")).isFalse();
+    }
+    @Test
+    public void testCanFormString_invalidCaseSameSizeTargetDifferentDoubledLetters() {
+        assertThat(StringUtility02.canFormString("abbd", "abdd")).isFalse();
+    }
 }

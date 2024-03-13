@@ -1,7 +1,6 @@
 package ru.liga.dcs.lesson06;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.List;
 
 public class StringUtility02 {
     /**
@@ -18,6 +17,9 @@ public class StringUtility02 {
      * @throws NullPointerException если одна из строк (или обе) равна null.
      */
     public static boolean canFormString(String original, String target) {
-        return true;
+        //TODO: Переделать так, чтобы проходил тест testCanFormString_invalidCaseSameSizeTargetDifferentDoubledLetters
+        List<Character> originalChars = original.chars().mapToObj(c -> (char) c).toList();
+        List<Character> targetChars = target.chars().mapToObj(c -> (char) c).toList();
+        return targetChars.containsAll(originalChars) && target.length() <= original.length();
     }
 }

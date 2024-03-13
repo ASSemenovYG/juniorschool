@@ -1,5 +1,8 @@
 package ru.liga.dcs.lesson06;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class TextUtility01 {
     /**
      * Ищет и возвращает самое длинное слово в предложении.
@@ -13,6 +16,15 @@ public class TextUtility01 {
      * @return самое длинное слово в предложении. Если предложение пустое или равно null, возвращает пустую строку.
      */
     public static String findLongestWord(String sentence) {
-        return "";
+        if (sentence == null || sentence.isEmpty()) {
+            return "";
+        }
+
+        List<String> words = new ArrayList<>(List.of(sentence.split(" ")));
+        String result = "";
+        for (String word : words) {
+            result = (result.length() >= word.length()) ? result : word;
+        }
+        return result;
     }
 }
