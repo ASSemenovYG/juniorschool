@@ -31,16 +31,34 @@ public class StringUtilityTest {
     public void testCanFormString_invalidCaseSameLetterTwice() {
         assertThat(StringUtility02.canFormString("abcd", "abcdd")).isFalse();
     }
+
     @Test
     public void testCanFormString_invalidCaseSameLetterTwiceAndSmallerTarget() {
         assertThat(StringUtility02.canFormString("abcd", "add")).isFalse();
     }
+
     @Test
     public void testCanFormString_invalidCaseSameLetterTwiceAndSameSizeTarget() {
         assertThat(StringUtility02.canFormString("abcd", "addd")).isFalse();
     }
+
     @Test
     public void testCanFormString_invalidCaseSameSizeTargetDifferentDoubledLetters() {
         assertThat(StringUtility02.canFormString("abbd", "abdd")).isFalse();
+    }
+
+    @Test
+    public void testCanFormString_validCaseSameSizeDoubledLetters() {
+        assertThat(StringUtility02.canFormString("abbd", "bdba")).isTrue();
+    }
+
+    @Test
+    public void testCanFormString_validCaseWithSpace() {
+        assertThat(StringUtility02.canFormString("ab bd", "b dba")).isTrue();
+    }
+
+    @Test
+    public void testCanFormString_invalidCaseWithSpace() {
+        assertThat(StringUtility02.canFormString("ab bd", "b db a")).isFalse();
     }
 }
