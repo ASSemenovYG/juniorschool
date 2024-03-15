@@ -1,5 +1,7 @@
 package ru.liga.dcs.lesson06;
 
+import java.util.regex.Pattern;
+
 public class StringUtil04 {
     /**
      * Суммирует все числа, найденные в строке.
@@ -14,6 +16,10 @@ public class StringUtil04 {
      * @throws NullPointerException если строка равна null.
      */
     public static int sumNumbersInString(String str) {
-        return 0;
+        return Pattern.compile("[\\d]+")
+                .matcher(str)
+                .results()
+                .mapToInt(match -> Integer.parseInt(match.group()))
+                .sum();
     }
 }
