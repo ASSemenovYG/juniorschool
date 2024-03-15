@@ -1,9 +1,7 @@
 package ru.liga.dcs.lesson06;
 
 import java.util.Hashtable;
-import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 
 public class StringUtility02 {
     /**
@@ -20,18 +18,18 @@ public class StringUtility02 {
      * @throws NullPointerException если одна из строк (или обе) равна null.
      */
     public static boolean canFormString(String original, String target) {
-        Map<Character, Integer> originalCharsMap = getCharacterMap(original.chars().mapToObj(c -> (char) c).toList());
+        Map<Character, Integer> originalCharsMap = getCharacterMap(original);
 
         boolean result = true;
-        for (Map.Entry<Character, Integer> entry : getCharacterMap(target.chars().mapToObj(c -> (char) c).toList()).entrySet()) {
-            result = result && Objects.equals(originalCharsMap.get(entry.getKey()), entry.getValue());
+        for (Map.Entry<Character, Integer> entry : getCharacterMap(target).entrySet()) {
+            result = result && originalCharsMap.getOrDefault(entry.getKey(), -1).compareTo(entry.getValue()) >= 0;
         }
         return result;
     }
 
-    private static Map<Character, Integer> getCharacterMap(List<Character> characterList) {
+    private static Map<Character, Integer> getCharacterMap(String str) {
         Map<Character, Integer> characterMap = new Hashtable<>();
-        for (Character c : characterList) {
+        for (Character c : str.chars().mapToObj(c -> (char) c).toList()) {
             characterMap.put(c, characterMap.getOrDefault(c, 0) + 1);
         }
         return characterMap;

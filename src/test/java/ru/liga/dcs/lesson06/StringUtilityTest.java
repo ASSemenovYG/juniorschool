@@ -61,4 +61,8 @@ public class StringUtilityTest {
     public void testCanFormString_invalidCaseWithSpace() {
         assertThat(StringUtility02.canFormString("ab bd", "b db a")).isFalse();
     }
+    @Test
+    public void testCanFormString_validCaseOriginalDoubledLetterTargetLessSize() {
+        assertThat(StringUtility02.canFormString("abbcd", "abc")).isTrue();
+    }
 }
