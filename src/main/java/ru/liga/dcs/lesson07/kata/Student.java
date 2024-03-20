@@ -1,8 +1,8 @@
 package ru.liga.dcs.lesson07.kata;
 
 public class Student {
-    private String name;
-    private double grade;
+    private final String name;
+    private final double grade;
 
     /**
      * Конструктор класса Student.
@@ -22,5 +22,9 @@ public class Student {
 
     public double getGrade() {
         return grade;
+    }
+
+    public String getNameAndGrade() {
+        return this.name + ": " + this.grade;
     }
 }

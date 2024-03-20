@@ -3,8 +3,8 @@ package ru.liga.dcs.lesson07.kata;
 import java.util.List;
 
 public class Author {
-    private String name;
-    private List<Book> books;
+    private final String name;
+    private final List<Book> books;
 
     // Конструктор, геттеры и сеттеры...
 

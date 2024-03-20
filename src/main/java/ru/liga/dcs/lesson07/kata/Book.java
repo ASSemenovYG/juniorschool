@@ -3,8 +3,8 @@ package ru.liga.dcs.lesson07.kata;
 import java.util.Objects;
 
 public class Book {
-    private String title;
-    private int yearOfPublication;
+    private final String title;
+    private final int yearOfPublication;
 
     // Конструктор, геттеры и сеттеры...
 
@@ -23,7 +23,11 @@ public class Book {
 
     @Override
     public boolean equals(Object o) {
-        return false;//НАПИШИТЕ ТУТ КОД СРАВНЕНИЯ ОБЪЕКТОВ
+        if (getClass() != o.getClass()) {
+            return false;
+        }
+        Book other = (Book) o;
+        return Objects.equals(this.title, other.getTitle());
     }
 
     @Override

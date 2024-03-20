@@ -1,11 +1,14 @@
 package ru.liga.dcs.lesson07.kata;
 
-import java.util.Collections;
+import java.util.Collection;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class LibraryKata02 {
+
+    private static final int PUBLICATION_YEAR_FILTER = 2000;
+    private static final int RESULT_BOOK_LIST_LIMIT = 5;
 
     /**
      * Агрегирует информацию о первых пяти уникальных книгах, опубликованных после 2000 года,
@@ -31,7 +34,15 @@ public class LibraryKata02 {
      * @return список названий первых пяти уникальных книг, опубликованных после 2000 года
      */
     public static List<String> aggregateBooksInfo(List<Author> authors) {
-        return Collections.emptyList();
+        return authors.stream()
+                .map(Author::getBooks)
+                .flatMap(Collection::stream)
+                .filter(book -> book.getYearOfPublication() > PUBLICATION_YEAR_FILTER)
+                .distinct()
+                .sorted(Comparator.comparingInt(Book::getYearOfPublication))
+                .limit(RESULT_BOOK_LIST_LIMIT)
+                .map(Book::getTitle)
+                .collect(Collectors.toList());
     }
 
 }
