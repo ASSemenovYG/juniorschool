@@ -3,8 +3,8 @@ package ru.liga.dcs.lesson07.task;
 import java.util.List;
 
 public class Department {
-    private String name;
-    private List<Employee> employees;
+    private final String name;
+    private final List<Employee> employees;
 
     // Конструктор, геттеры и сеттеры
     public Department(String name, List<Employee> employees) {
