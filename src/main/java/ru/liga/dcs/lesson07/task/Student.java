@@ -1,8 +1,8 @@
 package ru.liga.dcs.lesson07.task;
 
 public class Student {
-    private String name;
-    private int yearOfAdmission;
+    private final String name;
+    private final int yearOfAdmission;
 
     // Конструктор, геттеры и сеттеры
     public Student(String name, int yearOfAdmission) {
