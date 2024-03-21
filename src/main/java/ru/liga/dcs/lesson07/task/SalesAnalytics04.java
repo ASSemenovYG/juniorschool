@@ -1,6 +1,8 @@
 package ru.liga.dcs.lesson07.task;
 
+import java.util.Comparator;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -16,7 +18,9 @@ public class SalesAnalytics04 {
      * @return количество продаж в данной категории
      */
     public static long countSalesByCategory(List<SaleRecord> sales, String category) {
-        return 0L;
+        return sales.stream()
+                .filter(saleRecord -> Objects.equals(saleRecord.getCategory(), category))
+                .count();
     }
 
     /**
@@ -27,7 +31,10 @@ public class SalesAnalytics04 {
      * @return максимальная сумма продажи в категории
      */
     public static Optional<Double> getMaxSaleAmountInCategory(List<SaleRecord> sales, String category) {
-        return Optional.empty();
+        return sales.stream()
+                .filter(saleRecord -> Objects.equals(saleRecord.getCategory(), category))
+                .map(SaleRecord::getAmount)
+                .max(Comparator.naturalOrder());
     }
 
     /**
@@ -38,6 +45,9 @@ public class SalesAnalytics04 {
      * @return минимальная сумма продажи выше порога
      */
     public static Optional<Double> getMinSaleAmountAboveThreshold(List<SaleRecord> sales, double threshold) {
-        return Optional.empty();
+        return sales.stream()
+                .map(SaleRecord::getAmount)
+                .filter(amount -> amount > threshold)
+                .min(Comparator.naturalOrder());
     }
 }

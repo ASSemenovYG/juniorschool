@@ -1,9 +1,9 @@
 package ru.liga.dcs.lesson07.task;
 
 public class SaleRecord {
-    private String product;
-    private double amount;
-    private String category; // Новое поле
+    private final String product;
+    private final double amount;
+    private final String category; // Новое поле
 
     // Конструктор, геттеры и сеттеры
     public SaleRecord(String product, double amount, String category) {
