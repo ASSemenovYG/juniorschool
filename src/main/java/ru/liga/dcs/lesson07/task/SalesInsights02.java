@@ -1,6 +1,7 @@
 package ru.liga.dcs.lesson07.task;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 
@@ -21,7 +22,9 @@ public class SalesInsights02 {
      * @return первую запись о продаже из категории
      */
     public static Optional<SaleRecord> findFirstSaleInCategory(List<SaleRecord> sales, String category) {
-        return Optional.empty();
+        return sales.stream()
+                .filter(saleRecord -> Objects.equals(saleRecord.getCategory(), category))
+                .findFirst();
     }
 
     /**
@@ -32,7 +35,9 @@ public class SalesInsights02 {
      * @return true, если все продажи превышают порог
      */
     public static boolean areAllSalesAboveThreshold(List<SaleRecord> sales, double threshold) {
-        return false;
+        return sales.size() == sales.stream()
+                .filter(saleRecord -> saleRecord.getAmount() > threshold)
+                .count();
     }
 
     /**
@@ -43,7 +48,8 @@ public class SalesInsights02 {
      * @return true, если есть хотя бы одна продажа в категории
      */
     public static boolean isAnySaleInCategory(List<SaleRecord> sales, String category) {
-        return false;
+        return sales.stream()
+                .anyMatch(saleRecord -> Objects.equals(saleRecord.getCategory(), category));
     }
 
     /**
@@ -54,6 +60,7 @@ public class SalesInsights02 {
      * @return true, если нет продаж с данной максимальной суммой
      */
     public static boolean areNoSalesWithMaxAmount(List<SaleRecord> sales, double maxAmount) {
-        return false;
+        return sales.stream()
+                .noneMatch(saleRecord -> saleRecord.getAmount() == maxAmount);
     }
 }
