@@ -21,6 +21,8 @@ public class ProductAnalytics06 {
      * @return взвешенная сумма рейтингов
      */
     public static double calculateWeightedRatingSum(List<Product> products) {
-        return 0.0;
+        return products.stream()
+                .mapToDouble(Product::getRatingMultipliedByReviewCount)
+                .sum();
     }
 }

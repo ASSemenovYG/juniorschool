@@ -1,9 +1,9 @@
 package ru.liga.dcs.lesson07.task;
 
 public class Product {
-    private String name;
-    private double rating;
-    private int reviewCount;
+    private final String name;
+    private final double rating;
+    private final int reviewCount;
 
     // Конструктор, геттеры и сеттеры
     public Product(String name, double rating, int reviewCount) {
@@ -18,5 +18,9 @@ public class Product {
 
     public int getReviewCount() {
         return reviewCount;
+    }
+
+    public double getRatingMultipliedByReviewCount() {
+        return this.rating * this.reviewCount;
     }
 }
