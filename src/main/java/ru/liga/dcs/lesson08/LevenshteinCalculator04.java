@@ -1,4 +1,4 @@
-package ru.liga.dcs.lesson8;
+package ru.liga.dcs.lesson08;
 
 /**
  * Класс LevenshteinCalculator предоставляет функцию для вычисления расстояния Левенштейна.

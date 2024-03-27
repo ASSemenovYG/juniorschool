@@ -1,4 +1,4 @@
-package ru.liga.dcs.lesson8;
+package ru.liga.dcs.lesson08;
 
 import java.time.LocalTime;
 
