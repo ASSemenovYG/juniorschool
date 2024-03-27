@@ -18,6 +18,7 @@ public class NumberProcessor01 {
         for (int num : numbers) {
             sum += num;
         }
-        return sum / (numbers.length - 1);
+
+        return (double) sum / numbers.length;
     }
 }
