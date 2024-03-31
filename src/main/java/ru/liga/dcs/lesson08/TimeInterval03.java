@@ -30,6 +30,6 @@ public class TimeInterval03 {
      * @return тру если перекрытие есть
      */
     public boolean overlapsWith(TimeInterval03 other) {
-        return !this.end.isBefore(other.start) && this.start.isAfter(other.end);
+        return this.end.isAfter(other.start) && this.start.isBefore(other.end);
     }
 }
