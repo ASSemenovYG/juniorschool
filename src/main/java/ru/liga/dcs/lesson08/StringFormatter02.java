@@ -20,7 +20,7 @@ public class StringFormatter02 {
         StringBuilder result = new StringBuilder();
 
         for (int i = 0; i < words.length; i++) {
-            if (i % 2 == 0) {
+            if (i % 2 != 0) {
                 result.append(words[i].toUpperCase());
             } else {
                 result.append(words[i]);
