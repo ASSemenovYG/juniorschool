@@ -1,7 +1,8 @@
 package ru.liga.dcs.lesson06;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class StringUtilTest {
 
@@ -20,9 +21,11 @@ public class StringUtilTest {
         assertThat(StringUtil04.sumNumbersInString("")).isEqualTo(0);
     }
 
-    @Test(expected = NullPointerException.class)
+    @Test
     public void testSumNumbersInString_nullInput() {
-        StringUtil04.sumNumbersInString(null);
+        assertThrows(NullPointerException.class, () -> {
+            StringUtil04.sumNumbersInString(null);
+        });
     }
 
     // Дополнительные тесты могут быть добавлены для проверки различных сценариев

@@ -1,6 +1,6 @@
 package ru.liga.dcs.lesson06;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.*;
 
 public class TextUtilityTest {

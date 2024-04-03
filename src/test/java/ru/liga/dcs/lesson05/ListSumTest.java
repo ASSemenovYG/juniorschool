@@ -1,10 +1,13 @@
 package ru.liga.dcs.lesson05;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
+import ru.liga.dcs.lesson02.StringReverser02;
+
 import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class ListSumTest {
 
@@ -33,9 +36,11 @@ public class ListSumTest {
     /**
      * Тестирует sumList с null.
      */
-    @Test(expected = NullPointerException.class)
+    @Test
     public void testSumListWithNull() {
-        ListSum02 calculator = new ListSum02();
-        calculator.sumList(null);
+        assertThrows(NullPointerException.class, () -> {
+            ListSum02 calculator = new ListSum02();
+            calculator.sumList(null);
+        });
     }
 }

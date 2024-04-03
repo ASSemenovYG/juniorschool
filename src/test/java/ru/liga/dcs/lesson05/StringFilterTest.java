@@ -1,12 +1,13 @@
 package ru.liga.dcs.lesson05;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.function.Predicate;
 
 import static org.assertj.core.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class StringFilterTest {
 
@@ -54,8 +55,10 @@ public class StringFilterTest {
     /**
      * Тестирует поведение фильтра при null в качестве аргументов.
      */
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void testFilterStrings_NullArguments() {
-        stringFilter.filterStrings(null, null);
+        assertThrows(IllegalArgumentException.class, () -> {
+            stringFilter.filterStrings(null, null);
+        });
     }
 }

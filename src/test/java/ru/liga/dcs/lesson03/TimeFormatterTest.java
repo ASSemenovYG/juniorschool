@@ -1,7 +1,8 @@
 package ru.liga.dcs.lesson03;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 /**
  * Тесты для класса TimeFormatter.
@@ -32,8 +33,10 @@ public class TimeFormatterTest {
         assertThat(result).isEqualTo("01:00:00");
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void testConvertSecondsToTime_NegativeSeconds() {
-        TimeFormatter03.convertSecondsToTime(-1);
+        assertThrows(IllegalArgumentException.class, () -> {
+            TimeFormatter03.convertSecondsToTime(-1);
+        });
     }
 }

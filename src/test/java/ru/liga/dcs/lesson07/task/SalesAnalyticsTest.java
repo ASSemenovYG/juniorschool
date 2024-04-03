@@ -1,8 +1,9 @@
 package ru.liga.dcs.lesson07.task;
 
 import org.junit.Before;
-import org.junit.Test;
 import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.Test;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;

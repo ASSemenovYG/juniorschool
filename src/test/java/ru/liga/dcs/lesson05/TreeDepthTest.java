@@ -1,6 +1,6 @@
 package ru.liga.dcs.lesson05;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import static org.junit.Assert.*;
 import static ru.liga.dcs.lesson05.TreeDepth06.TreeNode;
 

@@ -1,7 +1,8 @@
 package ru.liga.dcs.lesson05;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 /**
  * Тесты для класса MedianCalculator.
@@ -34,18 +35,22 @@ public class MedianCalculatorTest {
      * Тестирует вычисление медианы для пустого массива.
      * Ожидается исключение IllegalArgumentException.
      */
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void testCalculateMedianWithEmptyArray() {
-        double[] numbers = {};
-        calculator.calculateMedian(numbers);
+        assertThrows(IllegalArgumentException.class, () -> {
+            double[] numbers = {};
+            calculator.calculateMedian(numbers);
+        });
     }
 
     /**
      * Тестирует вычисление медианы для массива null.
      * Ожидается исключение IllegalArgumentException.
      */
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void testCalculateMedianWithNullArray() {
-        calculator.calculateMedian(null);
+        assertThrows(IllegalArgumentException.class, () -> {
+            calculator.calculateMedian(null);
+        });
     }
 }

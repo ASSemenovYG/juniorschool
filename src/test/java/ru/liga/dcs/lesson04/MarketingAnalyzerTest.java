@@ -1,7 +1,7 @@
 package ru.liga.dcs.lesson04;
 
 import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.*;
 
 import ru.liga.dcs.lesson04.domain.Category;

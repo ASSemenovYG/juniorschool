@@ -1,7 +1,8 @@
 package ru.liga.dcs.lesson05;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 /**
  * Тесты для класса PasswordGenerator.
@@ -45,8 +46,10 @@ public class PasswordGeneratorTest {
     /**
      * Тест исключения при генерации пароля недостаточной длины.
      */
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void testGenerateStrongPasswordWithInvalidLength() {
-        generator.generateStrongPassword(5);
+        assertThrows(IllegalArgumentException.class, () -> {
+            generator.generateStrongPassword(5);
+        });
     }
 }

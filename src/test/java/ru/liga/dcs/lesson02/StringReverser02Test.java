@@ -1,7 +1,10 @@
 package ru.liga.dcs.lesson02;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
+import org.junit.jupiter.api.Test;
+import ru.liga.dcs.lesson03.TimeFormatter03;
 
 public class StringReverser02Test {
 
@@ -33,9 +36,11 @@ public class StringReverser02Test {
         assertThat(result).isEqualTo("  мир   Привет  ");
     }
 
-    @Test(expected = NullPointerException.class)
+    @Test
     public void testReverseWordsWithNull() {
-        StringReverser02 reverser = new StringReverser02();
-        reverser.reverseWords(null);
+        assertThrows(NullPointerException.class, () -> {
+            StringReverser02 reverser = new StringReverser02();
+            reverser.reverseWords(null);
+        });
     }
 }
