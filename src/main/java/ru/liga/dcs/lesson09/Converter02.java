@@ -21,10 +21,10 @@ public class Converter02 {
      *
      * @param decimalNumber положительное целое число для преобразования.
      * @return Строка, представляющая двоичное число.
-     *
+     * <p>
      * + нужно покрыть тестами
      */
     public String decimalToBinary(int decimalNumber) {
-        return "0";
+        return Integer.toBinaryString(decimalNumber);
     }
 }
